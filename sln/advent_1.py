@@ -9,4 +9,4 @@ def sol1():
         if next > current:
             count += 1
 
-    print(count)
+    print("Solution of Day 1 - Part 1: " + count)
