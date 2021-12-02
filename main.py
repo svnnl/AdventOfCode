@@ -12,10 +12,12 @@ def run_solution(option):
         print("Solution of Day " + option + " - Part " + str(i+1) + ": " + str(answer[i]))
 
 def menu():
-    print('Select the number of the Advent code you want to run:')
+    print("Below are the available solutions to run:")
     for file in os.listdir('sln'):
+        if file == '__pycache__':
+            continue
         print(file)
-    answer = input()
+    answer = input('Select the number of the Advent code you want to run:')
 
     run_solution(answer)
 

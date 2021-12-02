@@ -1,8 +1,4 @@
 def sol1():
-    """
-
-    :rtype: object
-    """
     file = open('data/advent_1.txt').read()
     numbers = list(map(int, file.splitlines()))
 
