@@ -1,5 +1,5 @@
 import os
-import PySimpleGUI as sg
+# import PySimpleGUI as sg
 from sln.advent_1 import sol1
 from sln.advent_2 import sol2
 from sln.advent_3 import sol3
