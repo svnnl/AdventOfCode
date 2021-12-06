@@ -5,6 +5,7 @@ from sln.advent_2 import sol2
 from sln.advent_3 import sol3
 from sln.advent_4 import sol4
 from sln.advent_5 import sol5
+from sln.advent_6 import sol6
 
 
 def run_solution(option):
@@ -18,6 +19,8 @@ def run_solution(option):
         answer = sol4()
     elif option == '5':
         answer = sol5()
+    elif option == '6':
+        answer = sol6()
 
     try:
         for i in range(0, len(answer)):
