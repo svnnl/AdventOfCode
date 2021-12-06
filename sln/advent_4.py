@@ -48,13 +48,12 @@ class BingoBoard:
         for sub_array in self.board_array:
             for val in sub_array:
                 if val != 'X':
-                    print('Current Board Sum: ' + str(self.board_sum))
                     self.board_sum += int(val)
         return self.board_sum * int(number)
 
 
 def sol4():
-    with open('../data/advent_4.txt', 'r') as f:
+    with open('data/advent_4.txt', 'r') as f:
         input = f.read().replace('  ', ' ')
 
     numbers = input.split('\n\n')[0].split(',')
@@ -75,11 +74,8 @@ def sol4():
     print('---------BEST BOARD---------')
     print('Amount of turns before bingo: ' + str(best_board.bingo_count))
     print(best_board.board_array)
-    print(best_board.score)
     print('----------WORST BOARD--------')
     print('Amount of turns before bingo: ' + str(worst_board.bingo_count))
     print(worst_board.board_array)
-    print(worst_board.score)
 
-
-sol4()
+    return [best_board.score, worst_board.score]
