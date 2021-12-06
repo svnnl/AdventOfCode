@@ -3,7 +3,7 @@ import colorama
 
 
 def color_sign(x):
-    c = colorama.Fore.GREEN if x >= 2 else colorama.Fore.YELLOW if x == 1 else colorama.Fore.RED
+    c = colorama.Fore.GREEN if x >= 2 else colorama.Fore.YELLOW if x == 1 else colorama.Fore.WHITE
     return f'{c}{x}'
 
 
@@ -18,17 +18,15 @@ def find_overlap(line_array, min_overlap: int) -> int:
 
 
 def sol5():
-    with open('../data/advent_5.txt', 'r') as f:
+    with open('data/advent_5.txt', 'r') as f:
         input = f.read().splitlines()
 
     line_array = np.zeros((10, 10), dtype=int)
 
     for line in input:
-        print(line)
+        print('Current line: ' + str(line))
         x1, y1 = map(int, line.split(' -> ')[0].split(','))
-        print('x1: ' + str(x1) + '-' + 'y1: ' + str(y1))
         x2, y2 = map(int, line.split(' -> ')[1].split(','))
-        print('x2: ' + str(x2) + '-' + 'y2: ' + str(y2))
         if x1 == x2:
             print('-----Vertical Line----')
             for i in range(min(y1, y2), max(y1, y2) + 1):
@@ -70,10 +68,7 @@ def sol5():
                     print(str(y2 + i) + ',' + str(x2 - i))
                     line_array[y2 + i][x2 - i] += 1
 
-    np.set_printoptions(formatter={'int': color_sign})
-    print(line_array)
+        np.set_printoptions(formatter={'int': color_sign})
+        print(str(line_array) + colorama.Fore.RESET)
 
     print('Amount of overlaps: ' + str(find_overlap(line_array, 2)))
-
-
-sol5()

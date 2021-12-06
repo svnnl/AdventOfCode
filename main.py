@@ -4,6 +4,8 @@ from sln.advent_1 import sol1
 from sln.advent_2 import sol2
 from sln.advent_3 import sol3
 from sln.advent_4 import sol4
+from sln.advent_5 import sol5
+
 
 def run_solution(option):
     if option == '1':
@@ -14,9 +16,14 @@ def run_solution(option):
         answer = sol3()
     elif option == '4':
         answer = sol4()
+    elif option == '5':
+        answer = sol5()
 
-    for i in range(0, len(answer)):
-        print("Solution of Day " + option + " - Part " + str(i + 1) + ": " + str(answer[i]))
+    try:
+        for i in range(0, len(answer)):
+            print("Solution of Day " + option + " - Part " + str(i + 1) + ": " + str(answer[i]))
+    except:
+        print('Printing the answer did not work')
 
 
 def menu():
@@ -31,5 +38,5 @@ def menu():
 
 
 if __name__ == '__main__':
-    #sg.Window(title="Hello World", layout=[[]], margins=(100, 50)).read()
+    # sg.Window(title="Hello World", layout=[[]], margins=(100, 50)).read()
     menu()
