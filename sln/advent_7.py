@@ -4,17 +4,17 @@ import matplotlib.pyplot as plt
 
 def sol7():
     with open('../data/advent_7.txt') as f:
-        input = list(map(int, f.read().split(',')))
+        data = list(map(int, f.read().split(',')))
 
     positions = []
     fuel_costs = []
 
     best_fuel_cost = 10000000000
-    best_position = min(input)
+    best_position = min(data)
 
-    for i in range(min(input), max(input)):
+    for i in range(min(data), max(data)):
         fuel_cost = 0
-        for position in input:
+        for position in data:
             diff = abs(position - i)
             fuel_cost += ((diff * (diff + 1)) // 2)
         fuel_costs.append(fuel_cost)
