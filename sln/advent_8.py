@@ -7,10 +7,7 @@ def sol8():
     for line in data:
         count += sum([1 for i in line.split(' | ')[1].split(' ') if len(i) in [2, 3, 4, 7]])
 
-    print(count)
-
     # PART 2
-
     def create_options(s1, s2):
         options = []
         for i in s2:
@@ -67,7 +64,8 @@ def sol8():
         print('Output: {0}'.format(output))
         result += int(output)
 
-    print('Sum of all numbers: {0}'.format(result))
+    print('Answer to Part 1: {0}'.format(count))
+    print('Answer to Part 2: {0}'.format(result))
 
 
 sol8()
