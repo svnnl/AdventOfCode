@@ -68,7 +68,7 @@ def sol9():
         basins.append(len(basin))
 
     print('Answer to Part 1: {0}'.format(risk_level))
-    print('Answer to Part 2: {0}'.format(np.prod(sorted(basins, reverse=True)[0:3])))
+    print('Answer to Part 2: {0}'.format(np.prod(sorted(basins, reverse=True)[:3])))
 
 
 sol9()
