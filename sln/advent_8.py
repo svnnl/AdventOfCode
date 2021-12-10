@@ -32,7 +32,7 @@ def sol8():
         eight = [i for i in input_values if len(i) == 7][0]
         six = find_number(digits_with_6, create_options(eight, one))[0]
         five = find_number(digits_with_5, create_options(six, eight))[0]
-        nine = eight.replace(set(six).symmetric_difference(set(five)).pop(), '')
+        nine = eight.replace(set(six).difference(set(five)).pop(), '')
         zero = [i for i in digits_with_6 if i not in [nine, six]][0]
         three = find_number(digits_with_5, create_options(nine, six))[0]
         two = [i for i in digits_with_5 if i not in [five, three]][0]

@@ -48,8 +48,7 @@ for line in incomplete_lines:
     score = 0
     reversed_string = line[::-1]
     for i in reversed_string:
-        if i in scores.keys():
-            score = (score * 5) + scores[i]
+        score = (score * 5) + scores[i]
     middle_scores.append(score)
 
 print("Answer to Part 2: {0}".format(int(np.median(middle_scores))))
