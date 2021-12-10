@@ -15,7 +15,7 @@ def sol8():
         return options
 
     def find_number(values, options):
-        return [i for i in options if i in values]
+        return next(i for i in options if i in values)
 
     result = 0
     for line in data:
@@ -26,16 +26,16 @@ def sol8():
         digits_with_5 = [i for i in input_values if len(i) == 5]
         digits_with_6 = [i for i in input_values if len(i) == 6]
 
-        one = [i for i in input_values if len(i) == 2][0]
-        four = [i for i in input_values if len(i) == 4][0]
-        seven = [i for i in input_values if (len(i) == 3)][0]
-        eight = [i for i in input_values if len(i) == 7][0]
-        six = find_number(digits_with_6, create_options(eight, one))[0]
-        five = find_number(digits_with_5, create_options(six, eight))[0]
+        one = next(i for i in input_values if len(i) == 2)
+        four = next(i for i in input_values if len(i) == 4)
+        seven = next(i for i in input_values if len(i) == 3)
+        eight = next(i for i in input_values if len(i) == 7)
+        six = find_number(digits_with_6, create_options(eight, one))
+        five = find_number(digits_with_5, create_options(six, eight))
         nine = eight.replace(set(six).difference(set(five)).pop(), '')
-        zero = [i for i in digits_with_6 if i not in [nine, six]][0]
-        three = find_number(digits_with_5, create_options(nine, six))[0]
-        two = [i for i in digits_with_5 if i not in [five, three]][0]
+        zero = next(i for i in digits_with_6 if i not in [nine, six])
+        three = find_number(digits_with_5, create_options(nine, six))
+        two = next(i for i in digits_with_5 if i not in [five, three])
 
         numbers = {
             '1': one,
