@@ -19,23 +19,28 @@ def print_paper(dots):
 
 def fold_paper(dots, f, v):
     max_x, max_y = get_max_values(dots)
+    print('HERE {0}'.format(dots))
 
-    for i in range(len(dots)):
-        print(dots[1])
-        print(i, dots[i])
-        print('Current point: {0}'.format(dots[i]))
-        x = dots[i][0]
-        y = dots[i][1]
+    new_dots = []
+    dots_to_remove = []
+
+    for i, value in enumerate(dots):
+        print(i, value)
+        x = value[0]
+        y = value[1]
 
         if f == 'y':
             if y > v:
                 print('Higher than fold value: {0} '.format(dots[i]))
                 new_point = (x, max_y - y)
-                dots.remove(dots[i])
-                dots.append(new_point)
+                dots_to_remove.append(dots[i])
+                new_dots.append(new_point)
         else:
             if x > v:
                 continue
+
+    dots = [x for x in dots if x not in dots_to_remove]
+    dots.append(new_dots)
 
     print(dots)
 
