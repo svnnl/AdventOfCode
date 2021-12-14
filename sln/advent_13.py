@@ -18,31 +18,28 @@ def print_paper(dots):
 
 
 def fold_paper(dots, f, v):
-    max_x, max_y = get_max_values(dots)
-    print('HERE {0}'.format(dots))
+    print('Folding on: {1} = {0}'.format(v, f))
 
     new_dots = []
     dots_to_remove = []
 
     for i, value in enumerate(dots):
-        print(i, value)
         x = value[0]
         y = value[1]
 
         if f == 'y':
             if y > v:
-                print('Higher than fold value: {0} '.format(dots[i]))
-                new_point = (x, max_y - y)
+                new_point = (x, (v * 2) - y)
                 dots_to_remove.append(dots[i])
                 new_dots.append(new_point)
         else:
             if x > v:
-                continue
+                new_point = (v * 2 - x, y)
+                dots_to_remove.append(dots[i])
+                new_dots.append(new_point)
 
     dots = [x for x in dots if x not in dots_to_remove]
-    dots.append(new_dots)
-
-    print(dots)
+    dots.extend(new_dots)
 
     return dots
 
@@ -64,6 +61,9 @@ for instruction in instructions:
     value = instruction[1]
 
     points = fold_paper(points, fold, value)
+
+    np.set_printoptions(threshold=np.inf, linewidth=np.nan, suppress=True)
+
     print_paper(points)
-    # size unique points
-    break
+
+    print('Amount of unique points: {0} '.format(len(set(points))))
