@@ -23,10 +23,10 @@ def find_rating(is_oxygen: bool, binary_array: list) -> str:
 def sol3():
     answers = []
 
-    # PART 1
-    file = np.loadtxt("data/advent_3.txt", dtype=str)
+    file = np.loadtxt("../data/advent_3.txt", dtype=str)
     binary_array = np.array([list(i) for i in file])
 
+    # PART 1
     modes = []
 
     for i in range(0, 12):
@@ -44,4 +44,14 @@ def sol3():
 
     answers.append(int(ogr, 2) * int(csr, 2))
 
-    return answers
+    # PART 2
+    mode = stats.mode([item[0] for item in binary_array])[0]
+    for item in binary_array:
+        item = item[item[0] != mode]
+
+    print(binary_array)
+
+    # return answers
+
+
+sol3()
