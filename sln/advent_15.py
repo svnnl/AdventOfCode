@@ -39,8 +39,16 @@ def adj(node):
 
 
 def find_shortest_path(graph, start):
-    D = {v: float('inf') for v in range(len(graph[0]) * len(graph))}
+    positions = []
+    for i in range(len(graph)):
+        for j in range(len(graph[0])):
+            positions.append((i, j))
+
+    D = {v: float('inf') for v in positions}
+
     D[start] = 0
+
+    print(D)
 
     pq = PriorityQueue()
     pq.put((0, start))
@@ -53,19 +61,20 @@ def find_shortest_path(graph, start):
     neighbours = adj(start)
 
     for neighbour in neighbours:
-        distance = graph[neighbour]
+        x = neighbour[0]
+        y = neighbour[1]
+        distance = int(graph[x][y])
         if neighbour not in visited:
             old_cost = D[neighbour]
             new_cost = D[current_vertex] + distance
+
             if new_cost < old_cost:
                 pq.put((new_cost, neighbour))
                 D[neighbour] = new_cost
 
+    print(D)
+
     return D
-
-    print(neighbours)
-
-    print(unvisited)
 
 
 find_shortest_path(data, (0, 0))
