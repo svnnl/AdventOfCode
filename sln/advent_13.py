@@ -1,5 +1,7 @@
 import math
 
+# Part 1
+
 with open('../data/advent_13.txt') as f:
     value, busses = f.read().splitlines()
 
@@ -20,3 +22,20 @@ for i in bus_ids:
         best_rounding_diff = rounding_diff
 
 print('Answer to Part 1: {}'.format(earliest_bus * ((math.ceil(best_diff) * earliest_bus) - int(value))))
+
+# Part 2
+
+busses = busses.split(',')
+busses = [(int(busses[k]), k) for k in range(len(busses)) if busses[k] != 'x']
+print(busses)
+
+multiplier = 1
+start = 0
+for i in range(len(busses) - 1):
+    bus_id = busses[i + 1][0]
+    position = busses[i + 1][1]
+    multiplier *= busses[i][0]
+    while (start + position) % bus_id != 0:
+        start += multiplier
+
+print('Answer to Part 2: {}'.format(start))
