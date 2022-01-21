@@ -25,8 +25,13 @@ for i in data.split('\n\n')[2].splitlines():
     if 'tickets' not in i:
         nearby_tickets.append(i)
 
-invalid = []
+invalid_numbers = []
 for ticket in nearby_tickets:
-    invalid.extend(check_ticket(ticket))
+    invalid_values = check_ticket(ticket)
+    if not len(invalid_values) == 0:
+        nearby_tickets.remove(ticket)
+    invalid_numbers.extend(invalid_values)
 
-print(f'Answer to Part 1: {sum(invalid)}')
+print(f'Answer to Part 1: {sum(invalid_numbers)}')
+
+# Part 2
