@@ -25,13 +25,17 @@ for i in data.split('\n\n')[2].splitlines():
     if 'tickets' not in i:
         nearby_tickets.append(i)
 
+valid_tickets = []
 invalid_numbers = []
 for ticket in nearby_tickets:
     invalid_values = check_ticket(ticket)
-    if not len(invalid_values) == 0:
-        nearby_tickets.remove(ticket)
+    if not invalid_values:
+        valid_tickets.append(ticket)
     invalid_numbers.extend(invalid_values)
 
 print(f'Answer to Part 1: {sum(invalid_numbers)}')
 
 # Part 2
+print(valid_tickets)
+
+amount_of_rules = len(rules) / 2
