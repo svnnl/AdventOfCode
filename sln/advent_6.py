@@ -50,6 +50,7 @@ for i in range(len(grid)):
             edge_values.add(grid[i][j])
 
 areas = []
+
 for i in range(len(data)):
     if i + 1 not in edge_values:
         areas.append(np.count_nonzero(grid == i + 1))
