@@ -44,6 +44,7 @@ for i in range(len(grid)):
 
 edge_values = set()
 
+
 for i in range(len(grid)):
     for j in range(len(grid[0])):
         if i == 0 or j == 0 or i == max_y or j == max_x:
