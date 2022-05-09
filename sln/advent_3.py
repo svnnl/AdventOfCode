@@ -22,13 +22,14 @@ for row in data:
             else:
                 grid[i][j] = int(id.replace("#", ""))
 
-print(f'Answer to Part 1: {np.count_nonzero(grid > 1)}')
+print(f'Answer to Part 1: {np.count_nonzero(grid == -1)}')
 
 for row in data:
     id, claim = row.split(' @ ')
+    id = int(id.replace("#", ""))
     start = tuple(map(int, claim.split(': ')[0].split(',')))
     size = tuple(map(int, claim.split(': ')[1].split('x')))
 
-    if np.count_nonzero(grid == int(id.replace("#", ""))) == size[0] * size[1]:
+    if np.count_nonzero(grid == id) == size[0] * size[1]:
         print(f'Answer to Part 2: {id}')
         break
