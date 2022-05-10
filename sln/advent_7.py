@@ -11,7 +11,7 @@ print(graph)
 
 
 def get_root_nodes(graph):
-    return [a for a, b in graph.items() if all(a not in graph for c, graph in graph.items())]
+    return [key for key, value in graph.items() if all(key not in v for k, v in graph.items())]
 
 
 def check_predecessor(graph, node, path):
@@ -20,10 +20,7 @@ def check_predecessor(graph, node, path):
         if node in v:
             predecessors.append(k)
 
-    if all(i in path for i in predecessors):
-        return True
-    else:
-        return False
+    return True if all(i in path for i in predecessors) else False
 
 
 def get_next_node(graph, available, path):
@@ -46,5 +43,16 @@ def traverse(graph, available):
     return path
 
 
-print(f'Answer to Part 1: {traverse(graph, get_root_nodes(graph))}')
-print(ord('a') - 96)
+path = traverse(graph, get_root_nodes(graph))
+print(f'Answer to Part 1: {path}')
+
+
+def process(path, workers, start_time):
+    total = 0
+    for i in path:
+        total += ord(i) - 64
+
+    return total
+
+
+print(process(path, 1, 0))
