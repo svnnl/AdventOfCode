@@ -4,8 +4,8 @@ TEST = 0
 DAY = 1
 
 path = f'test/test_advent_{DAY}.txt' if TEST else f'data/advent_{DAY}.txt'
-    
-data = open(path,'r').read().splitlines()
+
+data = open(path, 'r').read().splitlines()
 
 
 def get_sum(input):

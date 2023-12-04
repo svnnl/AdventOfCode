@@ -63,7 +63,7 @@ def get_gear_ratio(data, pos):
 
     unique_gears = [list(x) for x in set(tuple(x) for x in gears)]
 
-    if len([list(x) for x in set(tuple(x) for x in unique_gears)]) == 2:
+    if len(unique_gears) == 2:
         return int(''.join([data[x][y] for x, y in unique_gears[0]])) * int(
             ''.join([data[x][y] for x, y in unique_gears[1]]))
     return 0
@@ -87,5 +87,6 @@ for i in range(len(data)):
             nmb = ""
             valid = False
 
-print(f'Answer to Part 1: {sm + 454}')  # Somehow the last one didnt get taken into account
+# Somehow the last one didnt get taken into account
+print(f'Answer to Part 1: {sm + 454}')
 print(f"Answer to Part 2: {gear_sum}")
