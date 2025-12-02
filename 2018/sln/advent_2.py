@@ -1,10 +1,12 @@
-with open('../data/advent_2.txt') as f:
+with open("../data/advent_2.txt") as f:
     data = list(map(str, f.read().splitlines()))
 
 
 def checksum(_id):
-    return (1 if any(_id.count(letter) == 2 for letter in set(_id)) else 0,
-            1 if any(_id.count(letter) == 3 for letter in set(_id)) else 0)
+    return (
+        1 if any(_id.count(letter) == 2 for letter in set(_id)) else 0,
+        1 if any(_id.count(letter) == 3 for letter in set(_id)) else 0,
+    )
 
 
 two = 0
@@ -14,7 +16,7 @@ for i in data:
     two += a
     three += b
 
-print(f'Answer to Part 1: {two * three}')
+print(f"Answer to Part 1: {two * three}")
 
 
 def match(a, b):

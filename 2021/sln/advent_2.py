@@ -1,6 +1,6 @@
 def sol2():
     # PART 1
-    file = open('data/advent_2.txt').read()
+    file = open("data/advent_2.txt").read()
     instructions = file.splitlines()
 
     horizontal = 0
@@ -9,14 +9,14 @@ def sol2():
     aim = 0
 
     for i in instructions:
-        direction, number = i.split(' ')
-        if direction == 'forward':
+        direction, number = i.split(" ")
+        if direction == "forward":
             horizontal += int(number)
             depth2 += aim * int(number)
-        elif direction == 'up':
+        elif direction == "up":
             depth -= int(number)
             aim -= int(number)
-        elif direction == 'down':
+        elif direction == "down":
             depth += int(number)
             aim += int(number)
 

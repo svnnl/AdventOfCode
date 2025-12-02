@@ -32,7 +32,7 @@ def get_adjacent_indices(i, j, m, n):
 
 
 def sol9():
-    with open('../data/advent_9.txt') as f:
+    with open("../data/advent_9.txt") as f:
         data = np.array([list(map(int, i)) for i in f.read().splitlines()])
 
     print(data)
@@ -67,8 +67,8 @@ def sol9():
         append_to_basin(basin, i)
         basins.append(len(basin))
 
-    print('Answer to Part 1: {0}'.format(risk_level))
-    print('Answer to Part 2: {0}'.format(np.prod(sorted(basins, reverse=True)[:3])))
+    print("Answer to Part 1: {0}".format(risk_level))
+    print("Answer to Part 2: {0}".format(np.prod(sorted(basins, reverse=True)[:3])))
 
 
 sol9()

@@ -1,15 +1,15 @@
-data = open('../data/advent_9.txt').read().splitlines()
+data = open("../data/advent_9.txt").read().splitlines()
 
 
 def move_head(dir, head):
     match dir:
-        case 'R':
+        case "R":
             head[0] += 1
-        case 'L':
+        case "L":
             head[0] -= 1
-        case 'U':
+        case "U":
             head[1] += 1
-        case 'D':
+        case "D":
             head[1] -= 1
 
     return head
@@ -19,7 +19,7 @@ def move_tail(head, tail):
     diff_x = head[0] - tail[0]
     diff_y = head[1] - tail[1]
 
-    if diff_x ** 2 + diff_y ** 2 > 2:
+    if diff_x**2 + diff_y**2 > 2:
         tail[0] += (diff_x > 0) - (diff_x < 0)
         tail[1] += (diff_y > 0) - (diff_y < 0)
 
@@ -41,5 +41,5 @@ for cmd in data:
         visited_1.add(tuple(snake[1]))
         visited_2.add(tuple(snake[9]))
 
-print(f'Answer to Part 1: {len(set(visited_1))}')
-print(f'Answer to Part 2: {len(set(visited_2))}')
+print(f"Answer to Part 1: {len(set(visited_1))}")
+print(f"Answer to Part 2: {len(set(visited_2))}")

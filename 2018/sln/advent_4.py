@@ -1,10 +1,13 @@
-from datetime import datetime
 # import pandas as pd
 # import re
 from collections import defaultdict
+from datetime import datetime
 
-with open('../data/advent_4.txt') as f:
-    data = sorted(f.read().splitlines(), key=lambda x: datetime.strptime(f'{x[1:17]}', '%Y-%m-%d %H:%M'))
+with open("../data/advent_4.txt") as f:
+    data = sorted(
+        f.read().splitlines(),
+        key=lambda x: datetime.strptime(f"{x[1:17]}", "%Y-%m-%d %H:%M"),
+    )
 
 # rows = []
 # for index, i in enumerate(data):
@@ -31,12 +34,12 @@ start = None
 for line in data:
     if line:
         time = int(line[15:17])
-        if 'begins shift' in line:
+        if "begins shift" in line:
             guard = int(line.split()[3][1:])
             start = None
-        elif 'falls asleep' in line:
+        elif "falls asleep" in line:
             start = time
-        elif 'wakes up' in line:
+        elif "wakes up" in line:
             for t in range(start, time):
                 CM[(guard, t)] += 1
                 C[guard] += 1
@@ -56,8 +59,8 @@ def argmax(dic):
 best_guard = argmax(C)
 best_min = argmax(CM[best_guard])
 print(best_guard, best_min)
-print(f'Answer to Part 1: {best_min * best_guard}')
+print(f"Answer to Part 1: {best_min * best_guard}")
 
 best_guard2, best_min2 = argmax(CM)
 print(best_guard2, best_min2)
-print(f'Answer to Part 2: {best_guard2 * best_min2}')
+print(f"Answer to Part 2: {best_guard2 * best_min2}")

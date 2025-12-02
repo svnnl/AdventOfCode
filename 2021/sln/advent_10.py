@@ -1,18 +1,13 @@
 import numpy as np
 
-with open('../data/advent_10.txt') as f:
+with open("../data/advent_10.txt") as f:
     data = f.read().splitlines()
 
 # PART 1
 
-pairs = ['<>', '()', '{}', '[]']
+pairs = ["<>", "()", "{}", "[]"]
 
-wrong = {
-    ')': 3,
-    ']': 57,
-    '}': 1197,
-    '>': 25137
-}
+wrong = {")": 3, "]": 57, "}": 1197, ">": 25137}
 
 incomplete_lines = []
 error_score = 0
@@ -20,8 +15,8 @@ error_score = 0
 for index, line in enumerate(data):
     while any(i in line for i in pairs):
         for i in pairs:
-            line = line.replace(i, '')
-    print('Line {0} has the remaining string: {1}'.format(index, line))
+            line = line.replace(i, "")
+    print("Line {0} has the remaining string: {1}".format(index, line))
     if not any(i in line for i in wrong.keys()):
         incomplete_lines.append(line)
 
@@ -35,12 +30,7 @@ print("Answer to Part 1: {0}".format(error_score))
 
 # PART 2
 
-scores = {
-    '(': 1,
-    '[': 2,
-    '{': 3,
-    '<': 4
-}
+scores = {"(": 1, "[": 2, "{": 3, "<": 4}
 
 middle_scores = []
 

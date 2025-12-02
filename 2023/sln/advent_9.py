@@ -1,10 +1,12 @@
 TEST = 0
 DAY = 9
 
-path = f'test/test_advent_{DAY}.txt' if TEST else f'data/advent_{DAY}.txt'
+path = f"test/test_advent_{DAY}.txt" if TEST else f"data/advent_{DAY}.txt"
 
-data = [list(map(int, i)) for i in [line.split()
-                                    for line in open(path, 'r').read().splitlines()]]
+data = [
+    list(map(int, i))
+    for i in [line.split() for line in open(path, "r").read().splitlines()]
+]
 
 t1 = 0
 t2 = 0
@@ -31,5 +33,5 @@ for seq in data:
 
     t2 += r2
 
-print(f'Answer to Part 1: {t1}')
-print(f'Answer to Part 2: {t2}')
+print(f"Answer to Part 1: {t1}")
+print(f"Answer to Part 2: {t2}")

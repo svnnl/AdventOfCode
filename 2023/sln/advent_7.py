@@ -3,17 +3,19 @@ from collections import Counter, defaultdict
 TEST = 0
 DAY = 7
 
-path = f'test/test_advent_{DAY}.txt' if TEST else f'data/advent_{DAY}.txt'
+path = f"test/test_advent_{DAY}.txt" if TEST else f"data/advent_{DAY}.txt"
 
-data = open(path, 'r').read().splitlines()
+data = open(path, "r").read().splitlines()
 
 
 def play(mapping, part_2):
     ranks = [[] for _ in range(7)]
 
     for i, hand in enumerate(data):
-        cards = [int(x) if x not in mapping.keys() else int(mapping[x])
-                 for x in [i for i in hand.split()[0]]]
+        cards = [
+            int(x) if x not in mapping.keys() else int(mapping[x])
+            for x in [i for i in hand.split()[0]]
+        ]
 
         bid = int(hand.split()[1])
 
@@ -42,8 +44,13 @@ def play(mapping, part_2):
 
     non_empty_ranks = [l for l in ranks if l]
 
-    final_ranks = sum([sorted(sublist, key=lambda x: tuple(x[0]), reverse=True)
-                       for sublist in non_empty_ranks], [])
+    final_ranks = sum(
+        [
+            sorted(sublist, key=lambda x: tuple(x[0]), reverse=True)
+            for sublist in non_empty_ranks
+        ],
+        [],
+    )
 
     sm = 0
     for i, v in enumerate(final_ranks):
@@ -52,14 +59,10 @@ def play(mapping, part_2):
     return sm
 
 
-mapping = {"T": 10,
-           "J": 11,
-           "Q": 12,
-           "K": 13,
-           "A": 14}
+mapping = {"T": 10, "J": 11, "Q": 12, "K": 13, "A": 14}
 
-print(f'Answer to Part 1: {play(mapping, False)}')
+print(f"Answer to Part 1: {play(mapping, False)}")
 
 mapping["J"] = 1
 
-print(f'Answer to Part 2: {play(mapping, True)}')
+print(f"Answer to Part 2: {play(mapping, True)}")

@@ -1,18 +1,18 @@
-import numpy as np
 import colorama
+import numpy as np
 
 
 def color_sign(x):
     c = colorama.Fore.GREEN if x > 0 else colorama.Fore.RED
-    return f'{c}{x}'
+    return f"{c}{x}"
 
 
-np.set_printoptions(formatter={'int': color_sign})
+np.set_printoptions(formatter={"int": color_sign})
 
-with open('../data/advent_6.txt') as f:
-    data = [tuple(map(int, i.split(', '))) for i in f.read().splitlines()]
+with open("../data/advent_6.txt") as f:
+    data = [tuple(map(int, i.split(", "))) for i in f.read().splitlines()]
 
-print(f'Coordinates: {data}')
+print(f"Coordinates: {data}")
 
 
 def manhattan(p1, p2):
@@ -56,6 +56,6 @@ for i in range(len(data)):
     if i + 1 not in edge_values:
         areas.append(np.count_nonzero(grid == i + 1))
 
-print(f'Answer to Part 1: {max(areas)}')
+print(f"Answer to Part 1: {max(areas)}")
 
-print(f'Answer to Part 2: {region_size}')
+print(f"Answer to Part 2: {region_size}")

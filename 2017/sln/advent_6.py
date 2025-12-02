@@ -1,5 +1,5 @@
-with open('../data/advent_6.txt') as f:
-    data = list(map(int, f.read().split('\t')))
+with open("../data/advent_6.txt") as f:
+    data = list(map(int, f.read().split("\t")))
 
 banks = data.copy()
 found = False
@@ -24,7 +24,7 @@ while not found:
     else:
         occ.append(list(banks))
 
-print(f'Answer to Part 1: {steps}')
+print(f"Answer to Part 1: {steps}")
 
 banks = state.copy()
 found = False
@@ -44,4 +44,4 @@ while not found:
     if banks == state:
         found = True
 
-print(f'Answer to Part 2: {steps}')
+print(f"Answer to Part 2: {steps}")

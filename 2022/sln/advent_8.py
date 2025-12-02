@@ -1,7 +1,8 @@
-from termcolor import colored
 import math
 
-with open('../data/advent_8.txt') as f:
+from termcolor import colored
+
+with open("../data/advent_8.txt") as f:
     data = [list(map(int, x)) for x in [list(i) for i in f.read().splitlines()]]
 
 
@@ -12,10 +13,10 @@ def print_forest(grid):
     for i in range(len(grid)):
         for j in range(len(grid[0])):
             if (i, j) in visible:
-                print(colored(grid[i][j], 'green'), end="")
+                print(colored(grid[i][j], "green"), end="")
             else:
-                print(colored(grid[i][j], 'grey'), end="")
-        print('\t')
+                print(colored(grid[i][j], "grey"), end="")
+        print("\t")
 
 
 def get_edges(grid):
@@ -75,12 +76,7 @@ def scenic_score():
     return max_score
 
 
-directions = [
-    (1, 0),
-    (0, 1),
-    (-1, 0),
-    (0, -1)
-]
+directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
 visible = set(get_edges(data))
 
@@ -89,5 +85,5 @@ for pos in get_edges(data):
 
 print_forest(data)
 
-print(f'Answer to Part 1: {len(visible)}')
-print(f'Answer to Part 2: {scenic_score()}')
+print(f"Answer to Part 1: {len(visible)}")
+print(f"Answer to Part 2: {scenic_score()}")

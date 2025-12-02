@@ -1,15 +1,23 @@
-import re
 import math
+import re
 
 TEST = 0
 day = __file__.split("\\")[-1][:-3]
 
-path = f'2024/test/test_{day}.txt' if TEST else f'2024/data/{day}.txt'
+path = f"2024/test/test_{day}.txt" if TEST else f"2024/data/{day}.txt"
 
-data = open(path, 'r').read()
+data = open(path, "r").read()
 
-print("Answer to Part 1: {0}".format(sum(math.prod(i) for i in list(map(int, i)
-      for i in re.findall(r'mul\((\d{1,3}),(\d{1,3})\)', data)))))
+print(
+    "Answer to Part 1: {0}".format(
+        sum(
+            math.prod(i)
+            for i in list(
+                map(int, i) for i in re.findall(r"mul\((\d{1,3}),(\d{1,3})\)", data)
+            )
+        )
+    )
+)
 
 enabled = True
 r = 0

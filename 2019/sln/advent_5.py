@@ -1,5 +1,5 @@
-with open('../data/advent_5.txt') as f:
-    data = list(map(int, f.read().split(',')))
+with open("../data/advent_5.txt") as f:
+    data = list(map(int, f.read().split(",")))
 
 print(data)
 
@@ -33,13 +33,13 @@ def run_intcode(input):
 
         # Opcode 1: Addition(x1,x2) -> x3
         if current_command == ADDITION_COMMAND:
-            x1, x2, pos = program[position:position + 3]
+            x1, x2, pos = program[position : position + 3]
             program[pos] = get_value(program, x1, mode1) + get_value(program, x2, mode2)
             position += 3
 
         # Opcode 2: Multiply(x1,x2) -> x3
         elif current_command == MULTIPLY_COMMAND:
-            x1, x2, pos = program[position: position + 3]
+            x1, x2, pos = program[position : position + 3]
             program[pos] = get_value(program, x1, mode1) * get_value(program, x2, mode2)
             position += 3
 
@@ -57,7 +57,7 @@ def run_intcode(input):
 
         # Opcode 5: if(x1) -> jump(x2)
         elif current_command == JUMP_TRUE_COMMAND:
-            x1, x2 = program[position:position + 2]
+            x1, x2 = program[position : position + 2]
             position += 2
 
             if get_value(program, x1, mode1) != 0:
@@ -65,7 +65,7 @@ def run_intcode(input):
 
         # Opcode 6: if(!x1) -> jump(x2)
         elif current_command == JUMP_FALSE_COMMAND:
-            x1, x2 = program[position: position + 2]
+            x1, x2 = program[position : position + 2]
             position += 2
 
             if get_value(program, x1, mode1) == 0:
@@ -73,14 +73,22 @@ def run_intcode(input):
 
         # Opcode 7: if_less(x1,x2) -> x3
         elif current_command == LESS_THAN_COMMAND:
-            x1, x2, pos = program[position:position + 3]
-            program[pos] = 1 if get_value(program, x1, mode1) < get_value(program, x2, mode2) else 0
+            x1, x2, pos = program[position : position + 3]
+            program[pos] = (
+                1
+                if get_value(program, x1, mode1) < get_value(program, x2, mode2)
+                else 0
+            )
             position += 3
 
         # Opcode 8: if_equal(x1,x2) -> x3
         elif current_command == EQUAL_COMMAND:
-            x1, x2, pos = program[position:position + 3]
-            program[pos] = 1 if get_value(program, x1, mode1) == get_value(program, x2, mode2) else 0
+            x1, x2, pos = program[position : position + 3]
+            program[pos] = (
+                1
+                if get_value(program, x1, mode1) == get_value(program, x2, mode2)
+                else 0
+            )
             position += 3
 
         else:
@@ -89,5 +97,5 @@ def run_intcode(input):
     return output
 
 
-print(f'Answer to Part 1: {run_intcode(1)}')
-print(f'Answer to Part 2: {run_intcode(5)}')
+print(f"Answer to Part 1: {run_intcode(1)}")
+print(f"Answer to Part 2: {run_intcode(5)}")

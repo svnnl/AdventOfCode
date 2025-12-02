@@ -1,4 +1,4 @@
-with open('../data/advent_8.txt') as f:
+with open("../data/advent_8.txt") as f:
     data = list(map(int, f.read().split()))
 
 
@@ -40,5 +40,5 @@ class Node:
 root = Node()
 root.solve(data)
 
-print(f'Answer to Part 1: {root.get_sum()}')
-print(f'Answer to Part 2: {root.get_value()}')
+print(f"Answer to Part 1: {root.get_sum()}")
+print(f"Answer to Part 2: {root.get_value()}")

@@ -9,7 +9,7 @@ def fish_count(input, days):
 
 
 def sol6():
-    with open('data/advent_6.txt', 'r') as f:
-        input = list(map(int, f.read().split(',')))
+    with open("data/advent_6.txt", "r") as f:
+        input = list(map(int, f.read().split(",")))
 
     return [fish_count(input, 80), fish_count(input, 256)]

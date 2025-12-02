@@ -1,5 +1,5 @@
-with open('../data/advent_15.txt') as f:
-    data = list(map(int, f.read().split(',')))
+with open("../data/advent_15.txt") as f:
+    data = list(map(int, f.read().split(",")))
 
 
 def play(numbers, turns):
@@ -24,5 +24,5 @@ def play(numbers, turns):
     return next_number
 
 
-print(f'Answer to Part 1: {play(data, 2020)}')
-print(f'Answer to Part 2: {play(data, 30000000)}')
+print(f"Answer to Part 1: {play(data, 2020)}")
+print(f"Answer to Part 2: {play(data, 30000000)}")

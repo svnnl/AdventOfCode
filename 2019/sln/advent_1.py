@@ -1,9 +1,9 @@
 import math
 
-with open('../data/advent_1.txt') as f:
+with open("../data/advent_1.txt") as f:
     data = list(map(int, f.read().splitlines()))
 
-print(f'Answer to Part 1: {sum([math.floor(i / 3) - 2 for i in data])}')
+print(f"Answer to Part 1: {sum([math.floor(i / 3) - 2 for i in data])}")
 
 cost = 0
 for i in data:
@@ -11,4 +11,4 @@ for i in data:
         i = math.floor(i / 3) - 2
         cost += i
 
-print(f'Answer to Part 2: {cost}')
+print(f"Answer to Part 2: {cost}")

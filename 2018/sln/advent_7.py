@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-with open('../data/advent_7.txt') as f:
+with open("../data/advent_7.txt") as f:
     data = f.read().splitlines()
 
 graph = defaultdict(list)
@@ -11,7 +11,11 @@ print(graph)
 
 
 def get_root_nodes(graph):
-    return [key for key, value in graph.items() if all(key not in v for k, v in graph.items())]
+    return [
+        key
+        for key, value in graph.items()
+        if all(key not in v for k, v in graph.items())
+    ]
 
 
 def check_predecessor(graph, node, path):
@@ -30,11 +34,11 @@ def get_next_node(graph, available, path):
 
 
 def traverse(graph, available):
-    path = ''
+    path = ""
 
     while len(available) != 0:
-        print(f'Current path: {path}')
-        print(f'Current available nodes: {available}')
+        print(f"Current path: {path}")
+        print(f"Current available nodes: {available}")
         next = get_next_node(graph, available, path)
         path += next
         available += [i for i in graph[next] if i not in available and i not in path]
@@ -44,7 +48,7 @@ def traverse(graph, available):
 
 
 path = traverse(graph, get_root_nodes(graph))
-print(f'Answer to Part 1: {path}')
+print(f"Answer to Part 1: {path}")
 
 
 def process(path, workers, start_time):

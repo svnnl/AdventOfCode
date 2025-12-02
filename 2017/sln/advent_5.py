@@ -1,4 +1,4 @@
-with open('../data/advent_5.txt') as f:
+with open("../data/advent_5.txt") as f:
     data = list(map(int, f.read().splitlines()))
 
 steps = 0
@@ -15,7 +15,7 @@ while True:
         else:
             instr[prev] -= 1
     except IndexError:
-        print(f'Answer to Part 2: {steps - 1}')
+        print(f"Answer to Part 2: {steps - 1}")
         break
 
 steps = 0
@@ -29,5 +29,5 @@ while True:
         index += data[index]
         data[prev] += 1
     except IndexError:
-        print(f'Answer to Part 1: {steps - 1}')
+        print(f"Answer to Part 1: {steps - 1}")
         break

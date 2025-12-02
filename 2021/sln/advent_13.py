@@ -8,17 +8,17 @@ def get_max_values(dots):
 def print_paper(dots):
     max_x, max_y = get_max_values(dots)
 
-    paper = np.full((max_y + 1, max_x + 1), '.', dtype=str)
+    paper = np.full((max_y + 1, max_x + 1), ".", dtype=str)
     for point in points:
         x = point[0]
         y = point[1]
-        paper[y][x] = '#'
+        paper[y][x] = "#"
 
     print(paper)
 
 
 def fold_paper(dots, f, v):
-    print('Folding on: {1} = {0}'.format(v, f))
+    print("Folding on: {1} = {0}".format(v, f))
 
     new_dots = []
     dots_to_remove = []
@@ -27,7 +27,7 @@ def fold_paper(dots, f, v):
         x = value[0]
         y = value[1]
 
-        if f == 'y':
+        if f == "y":
             if y > v:
                 new_point = (x, (v * 2) - y)
                 dots_to_remove.append(dots[i])
@@ -44,17 +44,22 @@ def fold_paper(dots, f, v):
     return dots
 
 
-with open('../data/advent_13.txt') as f:
+with open("../data/advent_13.txt") as f:
     data = f.read().splitlines()
 
 points = []
 instructions = []
 
 for i in data:
-    if ',' in i:
-        points.append((int(i.split(',')[0]), int(i.split(',')[1])))
-    if 'f' in i:
-        instructions.append((i.split('along ')[1].split('=')[0], int(i.split('along ')[1].split('=')[1])))
+    if "," in i:
+        points.append((int(i.split(",")[0]), int(i.split(",")[1])))
+    if "f" in i:
+        instructions.append(
+            (
+                i.split("along ")[1].split("=")[0],
+                int(i.split("along ")[1].split("=")[1]),
+            )
+        )
 
 for instruction in instructions:
     fold = instruction[0]
@@ -66,4 +71,4 @@ for instruction in instructions:
 
     print_paper(points)
 
-    print('Amount of unique points: {0} '.format(len(set(points))))
+    print("Amount of unique points: {0} ".format(len(set(points))))

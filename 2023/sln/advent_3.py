@@ -1,19 +1,13 @@
 TEST = 0
 DAY = 3
 
-path = f'test/test_advent_{DAY}.txt' if TEST else f'data/advent_{DAY}.txt'
+path = f"test/test_advent_{DAY}.txt" if TEST else f"data/advent_{DAY}.txt"
 
-data = [list(map(str, x)) for x in [list(i)
-                                    for i in open(path, 'r').read().splitlines()]]
+data = [
+    list(map(str, x)) for x in [list(i) for i in open(path, "r").read().splitlines()]
+]
 
-directions = [(0, 1),
-              (1, 1),
-              (-1, 0),
-              (-1, -1),
-              (0, -1),
-              (-1, 1),
-              (1, -1)
-              ]
+directions = [(0, 1), (1, 1), (-1, 0), (-1, -1), (0, -1), (-1, 1), (1, -1)]
 
 nmb = ""
 
@@ -28,7 +22,7 @@ def adj(data, pos):
         ix = i + dir[0]
         ij = j + dir[1]
         if 0 <= ix < max_i and 0 <= ij < max_j:
-            if not data[ix][ij].isdigit() and data[ix][ij] != '.':
+            if not data[ix][ij].isdigit() and data[ix][ij] != ".":
                 return True
     return False
 
@@ -64,8 +58,9 @@ def get_gear_ratio(data, pos):
     unique_gears = [list(x) for x in set(tuple(x) for x in gears)]
 
     if len(unique_gears) == 2:
-        return int(''.join([data[x][y] for x, y in unique_gears[0]])) * int(
-            ''.join([data[x][y] for x, y in unique_gears[1]]))
+        return int("".join([data[x][y] for x, y in unique_gears[0]])) * int(
+            "".join([data[x][y] for x, y in unique_gears[1]])
+        )
     return 0
 
 
@@ -88,5 +83,5 @@ for i in range(len(data)):
             valid = False
 
 # Somehow the last one didnt get taken into account
-print(f'Answer to Part 1: {sm + 454}')
+print(f"Answer to Part 1: {sm + 454}")
 print(f"Answer to Part 2: {gear_sum}")

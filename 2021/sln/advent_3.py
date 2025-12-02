@@ -7,17 +7,17 @@ def find_rating(is_oxygen: bool, binary_array: list) -> str:
     while len(binary_array) != 1:
         mode, count = stats.mode([item[i] for item in binary_array])
         if is_oxygen:
-            mode = '1' if count == len(binary_array) / 2 else mode
+            mode = "1" if count == len(binary_array) / 2 else mode
         else:
-            if mode == '1' or count == len(binary_array) / 2:
-                mode = '0'
-            elif mode == '0':
-                mode = '1'
+            if mode == "1" or count == len(binary_array) / 2:
+                mode = "0"
+            elif mode == "0":
+                mode = "1"
 
         binary_array = [j for j in binary_array if j[i] == mode]
         i += 1
 
-    return ''.join(map(str, binary_array[0]))
+    return "".join(map(str, binary_array[0]))
 
 
 def sol3():
@@ -33,8 +33,8 @@ def sol3():
         mode = stats.mode([item[i] for item in binary_array])[0]
         modes.append(int(mode))
 
-    gamma = ''.join(map(str, modes))
-    epsilon = ''.join(['1' if i == '0' else '0' for i in gamma])
+    gamma = "".join(map(str, modes))
+    epsilon = "".join(["1" if i == "0" else "0" for i in gamma])
 
     answers.append(int(gamma, 2) * int(epsilon, 2))
 

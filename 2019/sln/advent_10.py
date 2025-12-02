@@ -1,15 +1,16 @@
-import numpy as np
 import math
 from collections import defaultdict
 
-with open('../data/advent_10.txt') as f:
+import numpy as np
+
+with open("../data/advent_10.txt") as f:
     data = np.array([list(map(str, i)) for i in f.read().splitlines()])
 
 asteroids = []
 
 for y, row in enumerate(data):
     for x, val in enumerate(row):
-        if val == '#':
+        if val == "#":
             asteroids.append((x, y))
 
 
@@ -39,4 +40,4 @@ for i in range(len(asteroids)):
 # for key, value in vis.items():
 #    print(f'Asteroid{key}: {len(value)} visible Asteroids.')
 
-print(f'Answer to Part 1: {max(len(v) for v in vis.values())}')
+print(f"Answer to Part 1: {max(len(v) for v in vis.values())}")

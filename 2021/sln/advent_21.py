@@ -1,5 +1,5 @@
-with open('../data/advent_21.txt') as f:
-    positions = [int(i.split(':')[1]) for i in f.read().splitlines()]
+with open("../data/advent_21.txt") as f:
+    positions = [int(i.split(":")[1]) for i in f.read().splitlines()]
 
 player_scores = [0, 0]
 
@@ -16,8 +16,10 @@ def roll_dice(index, score, position, dice):
     score += values[position]
     dice = dice_values[-1] + 1
     print(
-        'Player {0} rolls {1} and moves to space {2} for a total score of {3}'.format(index, dice_values, position,
-                                                                                      score))
+        "Player {0} rolls {1} and moves to space {2} for a total score of {3}".format(
+            index, dice_values, position, score
+        )
+    )
 
     return [score, position, dice]
 
@@ -28,9 +30,11 @@ turns = 1
 finished = False
 
 while not finished:
-    print('--------------------Turn {0}-------------------'.format(turns))
+    print("--------------------Turn {0}-------------------".format(turns))
     for index, score in enumerate(player_scores):
-        player_scores[index], positions[index], dice = roll_dice(index + 1, score, positions[index], dice)
+        player_scores[index], positions[index], dice = roll_dice(
+            index + 1, score, positions[index], dice
+        )
 
         throws += 3
 
@@ -40,4 +44,4 @@ while not finished:
 
     turns += 1
 
-print('Answer to Part 1 is: {0}'.format(throws * min(player_scores)))
+print("Answer to Part 1 is: {0}".format(throws * min(player_scores)))

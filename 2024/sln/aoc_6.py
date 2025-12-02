@@ -1,22 +1,18 @@
 TEST = 1
 day = __file__.split("\\")[-1][:-3]
 
-path = f'2024/test/test_{day}.txt' if TEST else f'2024/data/{day}.txt'
+path = f"2024/test/test_{day}.txt" if TEST else f"2024/data/{day}.txt"
 
-data = [list(i) for i in open(path, 'r').read().splitlines()]
+data = [list(i) for i in open(path, "r").read().splitlines()]
 
 
-start = [(x, y) for x in range(len(data))
-         for y in range(len(data[0])) if data[x][y] == "^"][0]
+start = [
+    (x, y) for x in range(len(data)) for y in range(len(data[0])) if data[x][y] == "^"
+][0]
 
 
 def traverse(grid):
-    dirs = {
-        0: (-1, 0),
-        90: (0, 1),
-        180: (1, 0),
-        270: (0, -1)
-    }
+    dirs = {0: (-1, 0), 90: (0, 1), 180: (1, 0), 270: (0, -1)}
 
     visited = set()
     x, y = start

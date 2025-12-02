@@ -1,5 +1,5 @@
-with open('../data/advent_3.txt') as f:
-    data = [i.split(',') for i in f.read().splitlines()]
+with open("../data/advent_3.txt") as f:
+    data = [i.split(",") for i in f.read().splitlines()]
 
 
 def get_coordinates(wires: list[list]) -> list:
@@ -11,22 +11,22 @@ def get_coordinates(wires: list[list]) -> list:
         for i in commands:
             direction = i[0]
             value = int(i[1:])
-            if direction == 'R':
+            if direction == "R":
                 x2 = x1 + value
                 while x1 != x2:
                     x1 += 1
                     coordinates.append((x1, y1))
-            if direction == 'L':
+            if direction == "L":
                 x2 = x1 - value
                 while x1 != x2:
                     x1 -= 1
                     coordinates.append((x1, y1))
-            if direction == 'U':
+            if direction == "U":
                 y2 = y1 + value
                 while y1 != y2:
                     y1 += 1
                     coordinates.append((x1, y1))
-            if direction == 'D':
+            if direction == "D":
                 y2 = y1 - value
                 while y1 != y2:
                     y1 -= 1
@@ -50,5 +50,5 @@ def get_steps(coordinates, intersections):
 coordinates = get_coordinates(data)
 intersections = get_intersections(coordinates)
 
-print(f'Answer to Part 1: {min(manhattan(intersections))}')
-print(f'Answer to Part 2: {min(get_steps(coordinates, intersections))}')
+print(f"Answer to Part 1: {min(manhattan(intersections))}")
+print(f"Answer to Part 2: {min(get_steps(coordinates, intersections))}")

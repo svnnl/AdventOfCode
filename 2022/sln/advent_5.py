@@ -1,7 +1,7 @@
-with open('../data/advent_5.txt') as f:
-    data, instructions = [i.split('\n') for i in f.read().split('\n\n')]
+with open("../data/advent_5.txt") as f:
+    data, instructions = [i.split("\n") for i in f.read().split("\n\n")]
 
-stacks = [''] * 10
+stacks = [""] * 10
 
 for row in data[:-1]:
     for i, v in enumerate(row[1::4]):
@@ -26,7 +26,7 @@ def move_2(n, source, destination):
 
 
 for i in instructions:
-    _, n, _, source, _, destination = i.split(' ')
+    _, n, _, source, _, destination = i.split(" ")
     move(int(n), int(source), int(destination))
     move_2(int(n), int(source), int(destination))
 

@@ -1,14 +1,14 @@
 from collections import Counter, defaultdict
 
-with open('../data/advent_14.txt', 'r') as f:
-    polymer, insertion_rules = f.read().split('\n\n')
+with open("../data/advent_14.txt", "r") as f:
+    polymer, insertion_rules = f.read().split("\n\n")
     pair_info = {}
-    for char1, char2, *_, element in insertion_rules.split('\n'):
+    for char1, char2, *_, element in insertion_rules.split("\n"):
         pair_info[char1 + char2] = (element, char1 + element, element + char2)
 
 
 def count_pairs(polymer):
-    return Counter(''.join(pair) for pair in zip(polymer, polymer[1:]))
+    return Counter("".join(pair) for pair in zip(polymer, polymer[1:]))
 
 
 def count_elements(polymer):
@@ -34,5 +34,5 @@ def solve(iterations):
     return totals[-1] - totals[0]
 
 
-print('Answer to Part 1: {0}'.format(solve(iterations=10)))
-print('Answer to Part 2: {0}'.format(solve(iterations=40)))
+print("Answer to Part 1: {0}".format(solve(iterations=10)))
+print("Answer to Part 2: {0}".format(solve(iterations=40)))

@@ -1,15 +1,19 @@
-import numpy as np
 import colorama
+import numpy as np
 
 
 def color_sign(x):
-    c = colorama.Fore.RED if x >= 9 else colorama.Fore.GREEN if x == 0 else colorama.Fore.WHITE
-    return f'{c}{x}'
+    c = (
+        colorama.Fore.RED
+        if x >= 9
+        else colorama.Fore.GREEN if x == 0 else colorama.Fore.WHITE
+    )
+    return f"{c}{x}"
 
 
-np.set_printoptions(formatter={'int': color_sign})
+np.set_printoptions(formatter={"int": color_sign})
 
-with open('../data/advent_11.txt') as f:
+with open("../data/advent_11.txt") as f:
     data = np.array([list(map(int, i)) for i in f.read().splitlines()])
 
 
@@ -34,7 +38,7 @@ def increase_adjacent(pos, flashed):
             increase_adjacent(i, flashed)
 
 
-print('Initial situation: \n {0}'.format(data))
+print("Initial situation: \n {0}".format(data))
 
 flash_count = 0
 steps = 300
@@ -59,5 +63,5 @@ for i in range(steps):
         simultaneous = i + 1
         break
 
-print('Answer to Part 1: {0}'.format(flash_count))
-print('Answer to Part 2: {0}'.format(simultaneous))
+print("Answer to Part 1: {0}".format(flash_count))
+print("Answer to Part 2: {0}".format(simultaneous))

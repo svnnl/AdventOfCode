@@ -3,13 +3,18 @@ import re
 TEST = 0
 DAY = 1
 
-path = f'test/test_advent_{DAY}.txt' if TEST else f'data/advent_{DAY}.txt'
+path = f"test/test_advent_{DAY}.txt" if TEST else f"data/advent_{DAY}.txt"
 
-data = open(path, 'r').read().splitlines()
+data = open(path, "r").read().splitlines()
 
 
 def get_sum(input):
-    return sum([int("%d%d" % (int(x[0]), int(x[-1]))) for x in [re.findall(r"\d", i) for i in input]])
+    return sum(
+        [
+            int("%d%d" % (int(x[0]), int(x[-1])))
+            for x in [re.findall(r"\d", i) for i in input]
+        ]
+    )
 
 
 part_1 = get_sum(data)
@@ -25,7 +30,7 @@ mapping = {
     "six": "6",
     "seven": "7",
     "eight": "8",
-    "nine": "9"
+    "nine": "9",
 }
 
 new_data = []

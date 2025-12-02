@@ -1,6 +1,6 @@
 import re
 
-with open('../data/advent_14.txt') as f:
+with open("../data/advent_14.txt") as f:
     data = f.read().splitlines()
 
 
@@ -12,36 +12,36 @@ def to_binary(num):
 def mask_1(binary, bitmask):
     temp = list(binary)
     for i, v in enumerate(bitmask):
-        if v != 'X':
+        if v != "X":
             temp[i] = str(v)
-    return ''.join(temp)
+    return "".join(temp)
 
 
-bitmask = ''
+bitmask = ""
 memory = {}
 
 for i, v in enumerate(data):
-    if 'mask' in v:
-        bitmask = v.split(' = ')[1]
+    if "mask" in v:
+        bitmask = v.split(" = ")[1]
     else:
         address = re.search(r"\[([0-9]+)\]", v).group(1)
-        value = v.split(' = ')[1]
+        value = v.split(" = ")[1]
 
-        binary = ((len(bitmask) - len(to_binary(value))) * '0') + to_binary(value)
+        binary = ((len(bitmask) - len(to_binary(value))) * "0") + to_binary(value)
 
         memory[address] = int(mask_1(binary, bitmask), 2)
 
-print(f'Answer to Part 1: {sum(memory.values())}')
+print(f"Answer to Part 1: {sum(memory.values())}")
 
 
 # Part 2
 def mask_2(binary, bitmask):
     temp = list(binary)
     for i, v in enumerate(bitmask):
-        if v in ['X', '1']:
+        if v in ["X", "1"]:
             temp[i] = str(v)
 
-    return ''.join(temp)
+    return "".join(temp)
 
 
 def find_combinations(binary, i=0):
@@ -51,12 +51,12 @@ def find_combinations(binary, i=0):
         return
 
     if i == len(pattern):
-        combinations.append(''.join(pattern))
+        combinations.append("".join(pattern))
         return
 
     # if the current character is '?'
-    if pattern[i] == 'X':
-        for ch in '01':
+    if pattern[i] == "X":
+        for ch in "01":
             # replace '?' with 0 and 1
             pattern[i] = str(ch)
 
@@ -64,7 +64,7 @@ def find_combinations(binary, i=0):
             find_combinations(pattern, i + 1)
 
             # backtrack
-            pattern[i] = 'X'
+            pattern[i] = "X"
 
     else:
         # if the current character is 0 or 1, ignore it and
@@ -72,23 +72,23 @@ def find_combinations(binary, i=0):
         find_combinations(pattern, i + 1)
 
 
-bitmask = ''
+bitmask = ""
 memory = {}
 
 for i, v in enumerate(data):
-    if 'mask' in v:
-        bitmask = v.split(' = ')[1]
+    if "mask" in v:
+        bitmask = v.split(" = ")[1]
     else:
         address = re.search(r"\[([0-9]+)\]", v).group(1)
-        value = v.split(' = ')[1]
+        value = v.split(" = ")[1]
 
         combinations = []
 
-        binary = ((len(bitmask) - len(to_binary(address))) * '0') + to_binary(address)
+        binary = ((len(bitmask) - len(to_binary(address))) * "0") + to_binary(address)
 
         find_combinations(mask_2(binary, bitmask))
 
         for combo in combinations:
             memory[int(combo, 2)] = int(value)
 
-print(f'Answer to Part 2: {sum(memory.values())}')
+print(f"Answer to Part 2: {sum(memory.values())}")

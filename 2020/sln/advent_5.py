@@ -1,4 +1,4 @@
-with open('../data/advent_5.txt') as f:
+with open("../data/advent_5.txt") as f:
     input = list(f.read().splitlines())
 
 scores = []
@@ -21,7 +21,7 @@ def get_seat(pass_):
 def bin_search(spec, high_bound):
     low_bound = 0
     for char in spec:
-        if char in 'FL':
+        if char in "FL":
             high_bound = high_bound - int((high_bound - low_bound + 1) / 2)
         else:
             low_bound = low_bound + int((high_bound - low_bound + 1) / 2)
@@ -34,8 +34,8 @@ for row in input:
     seat_id = row * 8 + col
     scores.append(seat_id)
 
-print('Answer to Part 1: {0}'.format(max(scores)))
+print("Answer to Part 1: {0}".format(max(scores)))
 
 scores.sort()
 my_seat_id = find_missing_seat_id(scores)
-print('Answer to Part 2: {0}'.format(find_missing_seat_id(scores)))
+print("Answer to Part 2: {0}".format(find_missing_seat_id(scores)))

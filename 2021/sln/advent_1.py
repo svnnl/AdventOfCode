@@ -1,5 +1,5 @@
 def sol1():
-    file = open('data/advent_1.txt').read()
+    file = open("data/advent_1.txt").read()
     numbers = list(map(int, file.splitlines()))
 
     answers = []

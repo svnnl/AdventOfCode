@@ -1,6 +1,6 @@
 import numpy as np
 
-data = open('../data/advent_10.txt').read().splitlines()
+data = open("../data/advent_10.txt").read().splitlines()
 
 register = 1
 signal = 0
@@ -14,14 +14,14 @@ while cycle < 240:
     cycle += 1
     position = (cycle - 1) % 40
     if position in [register - 1, register, register + 1]:
-        drawing.append('█')
+        drawing.append("█")
     else:
-        drawing.append(' ')
+        drawing.append(" ")
 
     if cycle % 40 == 20:
         signal += register * cycle
 
-    if data[i] == 'noop':
+    if data[i] == "noop":
         i += 1
     else:
         if executing:
@@ -31,7 +31,7 @@ while cycle < 240:
         else:
             executing = True
 
-print(f'Answer to Part 1: {signal}')
+print(f"Answer to Part 1: {signal}")
 
 drawing = np.array_split(np.asarray(drawing), 6)
-print(*[' '.join(i) for i in drawing], sep='\n')
+print(*[" ".join(i) for i in drawing], sep="\n")

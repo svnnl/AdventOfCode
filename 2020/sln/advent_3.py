@@ -1,7 +1,8 @@
-import numpy as np
 import math
 
-with open('../data/advent_3.txt') as f:
+import numpy as np
+
+with open("../data/advent_3.txt") as f:
     data = np.array([list(map(str, i)) for i in f.read().splitlines()])
 
 
@@ -17,7 +18,7 @@ def traverse(grid, direction):
 
     tree_count = 0
     while x < len(grid):
-        if grid[x][y] == '#':
+        if grid[x][y] == "#":
             tree_count += 1
         x += down
         y += right
@@ -25,5 +26,9 @@ def traverse(grid, direction):
     return tree_count
 
 
-print('Answer to Part 1: {0}'.format(solve(data, [(3, 1)])))
-print('Answer to Part 2: {0}'.format(solve(data, [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)])))
+print("Answer to Part 1: {0}".format(solve(data, [(3, 1)])))
+print(
+    "Answer to Part 2: {0}".format(
+        solve(data, [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)])
+    )
+)
