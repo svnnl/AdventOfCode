@@ -1,3 +1,6 @@
+mkdir -p $1/data
+mkdir -p $1/test
+
 touch $1/data/aoc_$2.txt
 
 touch $1/test/test_aoc_$2.txt
